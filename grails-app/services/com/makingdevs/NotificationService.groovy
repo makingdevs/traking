@@ -4,7 +4,7 @@ class NotificationService {
 
     def mailService
 
-    def sendNotificationTo(Notification notification) {
+    def sendNotificationTo(def notification) {
       mailService.sendMail {
         from notification.sender
         bcc notification.to
