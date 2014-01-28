@@ -12,4 +12,12 @@ class NotificationService {
         html notification.template.body
       }
     }
+
+    def createNewMailStructure(def mailStructureCommand) {
+      def body = new Template(mailStructureCommand).save(flush:true)  
+      def notification = new Notification(mailStructureCommand)
+      notification.template = body
+      notification.save(flush:true)
+      notification
+    }
 }
