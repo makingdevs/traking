@@ -24,4 +24,24 @@ class NotificationServiceSpec extends Specification {
       "Holas del mar"| "sergio@tumama.com" | "felipe@tupapa.com" | "esPerraaaaaaattteeee!"
   }
 
+  def "search notification by id"() {
+    given:
+      def templates = new Template(body:cuerpo).save(validate:false)
+    and:
+      def notification = new Notification()
+      notification.to = receptor
+      notification.sender = emisor
+      notification.subject = asunto
+      notification.save(validate:false)
+    when:
+      def result = service.searchNotificationById(notification.id)
+    then:
+      assert result.id > 0
+      assert result.to == receptor
+    where:
+     cuerpo             | receptor              | emisor              | asunto
+     "Holas del mar"    | "sergio@tumama.com"   | "felipe@tupapa.com" | "esPerraaaaaaattteeee!"
+     "donde esta wally" | "sutanito@tumama.com" | "juan@tupapa.com"   | "super super duper"
+  }
+
 }
