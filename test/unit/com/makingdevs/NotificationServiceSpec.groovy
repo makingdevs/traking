@@ -12,27 +12,16 @@ import spock.lang.Specification
 @Mock([Notification,Template])
 class NotificationServiceSpec extends Specification {
 
-   /* def "Created a object Notification and invoke the method sendNotificationTo"() {
-      given:
-       def templates = new Template()
-       templates.body = "super prueba" 
-       templates.save(validate:false)
-      and:
-        def notification = new Notification()
-        notification.to = ['sergio@makingdevs.com', 'says.rodriguez@gmail.com'] as String[]
-        notification.from = "radamantyz_033@hotmail.com"
-        notification.subject = "super duper prueba"
-        notification.template = templates
-        notification.save(validate:false)      
-      and:
-        def mailServiceSpec = monckFor(mailService)
-        mailServiceSpec.demand.registrarte(1..1){obj -> }
-        service.mailService = mailServiceSpec.createMock()
-      when:
-        service.sendNotificationTo(notification)
-      then:
-        println "hola"
-    }*/
-
+  def "Create new mail structure with params"() { 
+    given:
+      def params = [body:cuerpo,to:receptor,sender:emisor,subject:asunto ]
+    when:
+      def result = service.createNewMailStructure(params)
+    then:
+      assert result instanceof Notification
+    where:
+      cuerpo         | receptor            | emisor              | asunto
+      "Holas del mar"| "sergio@tumama.com" | "felipe@tupapa.com" | "esPerraaaaaaattteeee!"
+  }
 
 }
