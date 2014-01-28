@@ -20,4 +20,9 @@ class NotificationService {
       notification.save(flush:true)
       notification
     }
+
+    def searchNotificationById(def idNotification) {
+       Notification.findById(idNotification.toLong())
+    }
+
 }
