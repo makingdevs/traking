@@ -1,18 +1,15 @@
 package com.makingdevs
 
-import grails.transaction.Transactional
-
-@Transactional
 class NotificationService {
 
     def mailService
 
     def sendNotificationTo(Notification notification) {
       mailService.sendMail {
-        from notification.from
+        from notification.sender
         bcc notification.to
         subject notification.subject
-        html notification.template
+        html notification.template.body
       }
     }
 }
