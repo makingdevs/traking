@@ -2,8 +2,8 @@ package com.makingdevs
 
 class Notification {
 
-    String to
-    String from
+    String[] to
+    String sender 
     String subject
     Template template
 
@@ -12,7 +12,7 @@ class Notification {
 
     static constraints = {
       to nullable:false,blank:false
-      from blank:false, nullable:false
+      sender blank:false, nullable:false
       subject nullable:false      
     }
 }
