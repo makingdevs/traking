@@ -2,7 +2,7 @@ package com.makingdevs
 
 class RecordLogService {
 
-    def createRecorLogAndSave(def notificationPerInstance) {
+    def createRecorLogAndSave(Notification notificationPerInstance) {
       def log = new RecordLog(notification:notificationPerInstance).save(flush:true)
       log
     }
