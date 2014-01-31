@@ -1,20 +1,23 @@
 package com.makingdevs
 
-import grails.test.mixin.TestFor
+import grails.test.mixin.*
 import spock.lang.Specification
+import static org.junit.Assert.*
+import org.unit.*
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
 @TestFor(RecordLogService)
+@Mock([Notification, RecordLog,Template])
 class RecordLogServiceSpec extends Specification {
 
-	def setup() {
-	}
+  def "create and save row in Record Log"() {
+    given:
+      def bodys = new Template().save(validate:false)
+    and:
+      def notificacionPerInstance = new Notification(body:bodys).save(validate:false)
+    when:
+      def log = service.createRecorLogAndSave(notificacionPerInstance)
+    then:
+      assert log instanceof RecordLog
+  }
 
-	def cleanup() {
-	}
-
-	void "test something"() {
-	}
 }
