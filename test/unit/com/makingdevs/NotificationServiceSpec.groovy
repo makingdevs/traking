@@ -20,8 +20,9 @@ class NotificationServiceSpec extends Specification {
     then:
       assert result instanceof Notification
     where:
-      cuerpo         | receptor            | emisor              | asunto
-      "Holas del mar"| "sergio@tumama.com" | "felipe@tupapa.com" | "esPerraaaaaaattteeee!"
+      cuerpo            | receptor                  | emisor              | asunto
+      "Holas del mar"   | "sergio@tumama.com"       | "felipe@tupapa.com" | "esPerraaaaaaattteeee!"
+      "galas del señor" | "s@s.com,d@d.com,f@f.com" | "felipe@tupapa.com" | "noTeMEAserpes"
   }
 
   def "search notification by id"() {
