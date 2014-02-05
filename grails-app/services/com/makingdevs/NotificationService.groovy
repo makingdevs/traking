@@ -5,11 +5,13 @@ class NotificationService {
     def mailService
 
     def sendNotificationTo(def notification) {
-      mailService.sendMail {
-        from notification.sender
-        bcc notification.to
-        subject notification.subject
-        html notification.template.body
+     notification.to.toString().split(",").each{ addressee ->
+        mailService.sendMail {
+          from notification.sender
+          bcc addressee 
+          subject notification.subject
+          html notification.template.body
+        }
       }
     }
 
