@@ -5,7 +5,9 @@ class TrackingService {
     def notificationService
     def recordLongService
 
-    def trackingNotification() {
+    def trackingNotificationBy(MailStructureCommand msc) {
+      def notification = notificationService.createNewMailStructure(msc)
+      notificationService.sendNotificationTo(notification)
             
     }
 }
