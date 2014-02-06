@@ -1,16 +1,23 @@
 package com.makingdevs
 
+import com.makingdevs.NotificationNotFoundException
+
 class NotificationService {
 
     def mailService
 
     def sendNotificationTo(def notification) {
      notification.to.toString().split(",").each{ addressee ->
-        mailService.sendMail {
-          from notification.sender
-          bcc addressee 
-          subject notification.subject
-          html notification.template.body
+        try {
+          mailService.sendMail {
+            from notification.sender
+            bcc addressee 
+            subject notification.subject
+            html notification.template.body
+          }
+          return true
+        } catch (NotificationNotFoundException excep ){
+          return false
         }
       }
     }

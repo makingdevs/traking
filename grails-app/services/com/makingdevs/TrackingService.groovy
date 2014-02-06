@@ -7,7 +7,9 @@ class TrackingService {
 
     def trackingNotificationBy(MailStructureCommand msc) {
       def notification = notificationService.createNewMailStructure(msc)
-      notificationService.sendNotificationTo(notification)
-            
+      def responseOfSendMail = notificationService.sendNotificationTo(notification)
+      if (responseOfSendMail) {
+        def responseOfLog = recordLongService recordLongService.createRecordLogAndSave(notification) 
+      }
     }
 }
