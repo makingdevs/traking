@@ -1,20 +1,22 @@
 package com.makingdevs
 
-import grails.test.mixin.TestFor
+import grails.test.mixin.*
 import spock.lang.Specification
+import static org.junit.Assert.*
+import org.unit.*
 
-/**
- * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
- */
 @TestFor(TrackingService)
+@Mock(MailStructureCommand)
 class TrackingServiceSpec extends Specification {
 
-	def setup() {
-	}
 
-	def cleanup() {
-	}
+  def "create a notification in base to command"() {
+    given:
+      def msc = new MailStructureCommand()
+      
+    when:
+    then:
+    where:
+  }
 
-	void "test something"() {
-	}
 }
