@@ -15,7 +15,7 @@ class RecordLogServiceSpec extends Specification {
     and:
       def notificacionPerInstance = new Notification(body:bodys).save(validate:false)
     when:
-      def log = service.createRecorLogAndSave(notificacionPerInstance)
+      def log = service.createRecordLogAndSave(notificacionPerInstance)
     then:
       assert log instanceof RecordLog
   }
