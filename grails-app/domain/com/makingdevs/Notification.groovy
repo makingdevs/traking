@@ -7,7 +7,7 @@ class Notification {
     String subject
     Template template
 
-    Date dateCreted
+    Date dateCreated
     Date lastUpdated  
 
     static constraints = {
