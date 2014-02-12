@@ -12,4 +12,12 @@ class TrackingService {
         return recordLogService.createRecordLogAndSave(notification) 
       }
     }
+
+    def trackingNotificationBy(MailStructureCommand msc, def modelo) {
+      def notification = notificationService.createNewMailStructure(msc)
+      def responseOfSendMail = notificationService.sendNotificationTo(notification, modelo)
+      if (responseOfSendMail) {
+        return recordLogService.createRecordLogAndSave(notification)
+      }
+    }
 }
