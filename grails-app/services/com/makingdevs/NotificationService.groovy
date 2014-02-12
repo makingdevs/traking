@@ -22,11 +22,32 @@ class NotificationService {
       }
     }
 
+    def sendNotificationTo(def notification, def modelo) {
+      notification.to.toString().split(",").each{ addressee ->
+        try {
+          mailService.sendMail {
+            from notification.sender
+            bcc addressee 
+            subject notification.subject
+            html view: notification.template.body, model: modelo
+          }
+          return true
+        } catch (NotificationNotFoundException excep ){
+          return false
+        }
+      }
+    }
+
     def createNewMailStructure(def mailStructureCommand) {
-      def body = new Template(mailStructureCommand).save(flush:true)  
-      def notification = new Notification(mailStructureCommand)
-      notification.template = body
-      notification.save(flush:true)
+      def bodys = new Template()
+      bodys.body = mailStructureCommand.body
+      bodys.save(flush:true)
+      def notification = new Notification()
+      notification.to = mailStructureCommand.to
+      notification.sender = mailStructureCommand.sender
+      notification.subject = mailStructureCommand.subject
+      notification.template = bodys
+      notification.save(failOnError:true)
       notification
     }
 
