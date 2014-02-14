@@ -51,8 +51,6 @@ grails.project.dependency.resolution = {
             ":rest-client-builder:1.0.3") {
           export = false
       }
-      build ':tomcat:7.0.47'
-      compile ':hibernate:3.6.10.6'
       compile ':quartz:1.0-RC13'
       compile ':mail:1.0.1'
       test ':code-coverage:1.2.6'
