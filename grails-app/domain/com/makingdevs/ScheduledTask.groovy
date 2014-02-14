@@ -3,7 +3,7 @@ package com.makingdevs
 class ScheduledTask {
 
     Date schedulerTrigger
-    String schedulerExpretion
+    String schedulerExpression
     StatusScheduled statusScheduled
     Notification notification
 
@@ -12,6 +12,6 @@ class ScheduledTask {
 
     static constraints = {
       schedulerTrigger nullable:false
-      schedulerExpretion blank:false,nullable:false      
+      schedulerExpression blank:false,nullable:false      
     }
 }
