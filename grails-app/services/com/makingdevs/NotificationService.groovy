@@ -7,7 +7,7 @@ class NotificationService {
     def mailService
 
     def sendNotificationTo(def notification) {
-     notification.to.toString().split(",").each{ addressee ->
+     notification.receives.toString().split(",").each{ addressee ->
         try {
           mailService.sendMail {
             from notification.sender
@@ -23,7 +23,7 @@ class NotificationService {
     }
 
     def sendNotificationTo(def notification, def modelo) {
-      notification.to.toString().split(",").each{ addressee ->
+      notification.receives.toString().split(",").each{ addressee ->
         try {
           mailService.sendMail {
             from notification.sender
@@ -43,11 +43,11 @@ class NotificationService {
       bodys.body = mailStructureCommand.body
       bodys.save(flush:true)
       def notification = new Notification()
-      notification.to = mailStructureCommand.to
+      notification.receives = mailStructureCommand.to
       notification.sender = mailStructureCommand.sender
       notification.subject = mailStructureCommand.subject
       notification.template = bodys
-      notification.save(failOnError:true)
+      notification.save(flush:true)
       notification
     }
 
