@@ -14,7 +14,7 @@ class NotificationServiceSpec extends Specification {
 
   def "Create new mail structure with params"() { 
     given:
-      def params = [body:cuerpo,to:receptor,sender:emisor,subject:asunto ]
+      def params = [body:cuerpo,receives:receptor,sender:emisor,subject:asunto ]
     when:
       def result = service.createNewMailStructure(params)
     then:
