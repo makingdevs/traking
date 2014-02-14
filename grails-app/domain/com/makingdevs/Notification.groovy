@@ -2,7 +2,7 @@ package com.makingdevs
 
 class Notification {
 
-    String to
+    String receives
     String sender 
     String subject
     Template template
@@ -11,7 +11,7 @@ class Notification {
     Date lastUpdated  
 
     static constraints = {
-      to nullable:false
+      receives nullable:false
       sender blank:false, nullable:false
       subject nullable:false      
     }
